@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>我的學期一週時間表</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Noto+Serif+TC:wght@600;700;900&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow editable-copy" data-edit-copy="eyebrow" title="點擊編輯">SEMESTER TIMETABLE</p>
+          <h1 id="pageTitle" data-edit-title title="點擊編輯大標">我的學期一週時間表</h1>
+          <p class="subtitle editable-copy" data-edit-copy="subtitle" title="點擊編輯">從 9 月 1 日開始，安排到寒假的每週內容。</p>
+        </div>
+      </header>
+
+      <section class="calendar-frame" aria-label="學期一週時間表">
+        <div class="calendar-toolbar">
+          <div class="week-label">
+            <span class="calendar-mark" aria-hidden="true">✦</span>
+            <div>
+              <span class="toolbar-label editable-copy" data-edit-copy="toolbarLabel" title="點擊編輯">學期內容</span>
+              <strong class="editable-copy" data-edit-copy="dateRange" title="點擊編輯">9 月 1 日至寒假</strong>
+            </div>
+          </div>
+          <p class="hint editable-copy" data-edit-copy="hint" title="點擊編輯">點擊新增，拖曳同一天的連續格子即可合併；按住日程卡片可伸縮時段</p>
+        </div>
+        <div class="calendar-scroll">
+          <div class="calendar-grid" id="calendarGrid"></div>
+        </div>
+      </section>
+
+      <footer class="page-footer">
+        <span><i class="status-dot"></i>資料會自動儲存在這台裝置</span>
+        <span>共 11 個可自訂時間段</span>
+      </footer>
+    </main>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <div class="dialog-backdrop" id="dialogBackdrop" hidden>
+      <form class="dialog" id="eventDialog">
+        <button class="dialog-close" id="dialogClose" type="button" aria-label="關閉">×</button>
+        <p class="eyebrow" id="dialogEyebrow">NEW EVENT</p>
+        <h2 id="dialogTitle">新增安排</h2>
+        <p class="dialog-context" id="dialogContext"></p>
+        <label id="eventTitleLabel">事件名稱<input id="eventTitleInput" type="text" maxlength="40" required /></label>
+        <label id="eventNoteLabel">備註（可留白）<input id="eventNoteInput" type="text" maxlength="80" /></label>
+        <label id="eventDurationLabel" hidden>合併時間段數<input id="eventDurationInput" type="number" min="1" max="11" value="1" required /></label>
+        <label id="timeInputLabel" hidden>時間段<input id="timeInput" type="text" maxlength="30" /></label>
+        <label id="timeNoteLabel" hidden>時間備註（可留白）<input id="timeNoteInput" type="text" maxlength="80" placeholder="例如：12:30 去辦公室拿文件" /></label>
+        <label id="titleInputLabel" hidden>大標文字<input id="titleInput" type="text" maxlength="40" required /></label>
+        <div class="dialog-actions"><button class="today-button" id="dialogCancel" type="button">取消</button><button class="primary-button" type="submit">儲存</button></div>
+      </form>
+    </div>
+    <script src="app.js"></script>
+  </body>
+</html>
